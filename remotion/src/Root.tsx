@@ -3,6 +3,7 @@ import { Composition } from "remotion";
 import { TierList, TierListProps } from "./gd/TierList";
 import { MemeLastQuest, MemeWarzoneDrop } from "./gd/Memes";
 import { MemeTwoBeat, MemeTwoBeatProps } from "./gd/MemeTwoBeat";
+import { TimeLadder, TimeLadderProps } from "./gd/TimeLadder";
 
 const dmzDiscret: MemeTwoBeatProps = {
   setupSrc: "dmz_sneak.mp4",
@@ -68,6 +69,19 @@ const wowTankPull: MemeTwoBeatProps = {
   music: true,
 };
 
+const gta6Soiree: TimeLadderProps = {
+  title: ["Ma 1re soirée", "sur GTA 6 :"],
+  steps: [
+    { time: "21h00", text: "« juste 1h ce soir »", src: "gta_road.mp4", rate: 1 },
+    { time: "21h30", text: "je regarde le coucher de soleil", src: "gta_sunset.mp4", rate: 0.45 },
+    { time: "22h45", text: "toujours pas fait la 1re mission", src: "gta_iguana.mp4", rate: 0.5, pos: "60% 50%" },
+    { time: "01h10", text: "voiture « empruntée », la police débarque", src: "gta_cops.mp4", rate: 0.6, pos: "62% 50%" },
+    { time: "04h00", text: "« allez, une dernière »", src: "gta_night.mp4", rate: 0.8, pos: "62% 50%" },
+  ],
+  at: [0, 45, 90, 135, 185],
+  music: true,
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -80,6 +94,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="MemeWowTankPull" component={MemeTwoBeat} durationInFrames={160} fps={30} width={1080} height={1920} defaultProps={wowTankPull} />
       <Composition id="TierListSoloV2" component={TierList} durationInFrames={225} fps={30} width={1080} height={1920} defaultProps={{ ...soloTiers, reveal: [30, 60, 90, 150] }} />
       <Composition id="MemeWarzoneDropV2" component={MemeWarzoneDrop} durationInFrames={145} fps={30} width={1080} height={1920} />
+    <Composition id="ListGta6Soiree" component={TimeLadder} durationInFrames={230} fps={30} width={1080} height={1920} defaultProps={gta6Soiree} />
     </>
   );
 };
