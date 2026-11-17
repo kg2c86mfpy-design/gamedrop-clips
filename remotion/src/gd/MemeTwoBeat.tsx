@@ -20,7 +20,10 @@ export type MemeTwoBeatProps = {
   punchRate?: number;
   punchLines: string[];
   punchColor?: string;
-  music?: boolean; // false = SFX only (TikTok version, user adds a trending sound)
+  music?: boolean | string; // false = SFX only; true = bed.mp3; string = file in public/music/ (e.g. "comedy_lurking_sloth.mp3")
+  musicStart?: number; // seconds into the track
+  punchMusic?: string; // optional beat switch: a 2nd track (public/music/) that kicks in on the punch
+  punchMusicStart?: number;
   endSfx?: string; // e.g. "bruh"
 };
 
@@ -107,7 +110,20 @@ export const MemeTwoBeat: React.FC<MemeTwoBeatProps> = (p) => {
       <Flash at={P} color={p.punchColor ?? "#FF4D2E"} dur={9} />
 
       {p.music ? (
-        <Audio src={staticFile("bed.mp3")} trimBefore={30} volume={(fr) => interpolate(fr, [0, 6, P - 3, P], [0.3, 0.3, 0.3, 0], clamp)} />
+        <Audio
+          src={staticFile(typeof p.music === "string" ? `music/${p.music}` : "bed.mp3")}
+          trimBefore={Math.round((p.musicStart ?? (typeof p.music === "string" ? 0 : 1)) * 30)}
+          volume={(fr) => interpolate(fr, [0, P - 3, P], [0.32, 0.32, 0], clamp)}
+        />
+      ) : null}
+      {p.music && p.punchMusic ? (
+        <Sequence from={P}>
+          <Audio
+            src={staticFile(`music/${p.punchMusic}`)}
+            trimBefore={Math.round((p.punchMusicStart ?? 0) * 30)}
+            volume={(fr) => interpolate(fr, [0, 4], [0, 0.4], clamp)}
+          />
+        </Sequence>
       ) : null}
       <Audio src={staticFile("sfx/whoosh.wav")} volume={0.5} />
       <Sequence from={P - 6}>

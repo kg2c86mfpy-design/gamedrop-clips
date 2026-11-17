@@ -13,13 +13,14 @@ export type TierListProps = {
   source: string;
   bg: string;
   reveal?: number[]; // frames for C, B, A, S
+  music?: string; // file in public/music/ (default: bed.mp3)
 };
 
 // Reveal order: bottom row first, S (top row) last
 const DEFAULT_REVEAL = [60, 105, 150, 225]; // frames for C, B, A, S
 const ROW_H = 190;
 
-export const TierList: React.FC<TierListProps> = ({ title, subtitle, tiers, cta, source, bg, reveal }) => {
+export const TierList: React.FC<TierListProps> = ({ title, subtitle, tiers, cta, source, bg, reveal, music }) => {
   const f = useCurrentFrame();
   const { durationInFrames: D } = useVideoConfig();
   const REVEAL = reveal ?? DEFAULT_REVEAL;
@@ -185,8 +186,8 @@ export const TierList: React.FC<TierListProps> = ({ title, subtitle, tiers, cta,
 
       {/* Sound */}
       <Audio
-        src={staticFile("bed.mp3")}
-        trimBefore={60}
+        src={staticFile(music ? `music/${music}` : "bed.mp3")}
+        trimBefore={music ? 0 : 60}
         volume={(fr) => interpolate(fr, [0, 4, D - 30, D], [0.35, 0.35, 0.35, 0], clamp)}
       />
       <Sequence from={0}>
