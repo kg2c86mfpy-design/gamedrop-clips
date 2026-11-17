@@ -13,8 +13,8 @@ export type TwoWaitsProps = {
   photo: string; // public/ path, 16:9
   focus: { x: number; y: number }; // punch zoom target in % of the photo
   topClips: Clip[];
-  topLabel: string;
-  bottomLabel: string;
+  topLabel: string[];
+  bottomLabel: string[];
   header?: string;
   punchAt: number;
   punchLines: string[];
@@ -128,13 +128,13 @@ export const TwoWaits: React.FC<TwoWaitsProps> = (p) => {
               {p.header}
             </div>
           ) : null}
-          <Label text={[p.topLabel]} size={92} rot={-2} at={-12} style={{ top: TOP_Y + PANEL_H - 70 }} />
-          <Label text={[p.bottomLabel]} size={92} rot={2} at={-12} style={{ top: BOT_Y + PANEL_H - 70 }} />
+          <Label text={p.topLabel} size={88} rot={-2} at={-12} style={{ top: TOP_Y + PANEL_H - 70 - (p.topLabel.length - 1) * 100 }} />
+          <Label text={p.bottomLabel} size={88} rot={2} at={-12} style={{ top: BOT_Y + PANEL_H - 70 - (p.bottomLabel.length - 1) * 100 }} />
         </div>
         <Sequence from={P}>
           <Label text={p.punchLines} size={96} rot={-1.5} at={2} style={{ top: 1360 }} />
         </Sequence>
-        <Watermark />
+        {f >= P ? <Watermark /> : null}
       </AbsoluteFill>
       <Flash at={P} color="white" dur={8} />
 
