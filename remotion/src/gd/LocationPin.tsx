@@ -20,6 +20,9 @@ export type LocationPinProps = {
   hitMusic?: string;
   hitMusicStart?: number; // seconds into hitMusic that land on hitAt
   flashEnd?: boolean; // white flash on the last frames (cliffhanger before the loop)
+  soundtrack?: string; // full pre-mixed audio in public/music/ (overrides music/hitMusic)
+  question?: string; // engagement question shown near the end
+  questionAt?: number;
 };
 
 const Pin: React.FC = () => (
@@ -29,7 +32,7 @@ const Pin: React.FC = () => (
   </svg>
 );
 
-export const LocationPin: React.FC<LocationPinProps> = ({ src, clipFrames, place, date, music, musicStart, aiLabel = true, look = "box", musicEnd, hitAt, hitMusic, hitMusicStart, flashEnd }) => {
+export const LocationPin: React.FC<LocationPinProps> = ({ src, clipFrames, place, date, music, musicStart, aiLabel = true, look = "box", musicEnd, hitAt, hitMusic, hitMusicStart, flashEnd, soundtrack, question, questionAt }) => {
   const { durationInFrames: D } = useVideoConfig();
   const f = useCurrentFrame();
   const gold: React.CSSProperties = {
@@ -67,6 +70,20 @@ export const LocationPin: React.FC<LocationPinProps> = ({ src, clipFrames, place
           </div>
         </AbsoluteFill>
       )}
+      {question && questionAt !== undefined ? (
+        <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", paddingTop: 260 }}>
+          <div
+            style={{
+              ...gold, fontSize: 92, lineHeight: 1.05,
+              opacity: interpolate(f, [questionAt, questionAt + 8], [0, 1], clamp),
+              transform: `scale(${interpolate(f, [questionAt, questionAt + 10], [1.25, 1], clamp)})`,
+            }}
+          >
+            {question}
+          </div>
+        </AbsoluteFill>
+      ) : null}
+      {soundtrack ? <Audio src={staticFile(`music/${soundtrack}`)} volume={1} /> : null}
       {flashEnd ? <AbsoluteFill style={{ background: "#FFF6DC", opacity: interpolate(f, [D - 9, D - 1], [0, 1], clamp) }} /> : null}
       {aiLabel ? (
         <div style={{ position: "absolute", left: 28, bottom: 40, fontFamily: FONT, fontSize: 24, color: "rgba(255,255,255,0.7)" }}>
@@ -74,7 +91,7 @@ export const LocationPin: React.FC<LocationPinProps> = ({ src, clipFrames, place
         </div>
       ) : null}
       <Watermark />
-      {music ? (
+      {music && !soundtrack ? (
         <Audio
           src={staticFile(`music/${music}`)}
           trimBefore={Math.round((musicStart ?? 0) * 30)}
