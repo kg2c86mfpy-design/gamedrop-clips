@@ -3,6 +3,7 @@ import { Composition } from "remotion";
 import { TierList, TierListProps } from "./gd/TierList";
 import { MemeLastQuest, MemeWarzoneDrop } from "./gd/Memes";
 import { TwoWaits, TwoWaitsProps } from "./gd/TwoWaits";
+import { LocationPin } from "./gd/LocationPin";
 import { MemeTwoBeat, MemeTwoBeatProps } from "./gd/MemeTwoBeat";
 import { TimeLadder, TimeLadderProps } from "./gd/TimeLadder";
 
@@ -129,6 +130,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="DemoBeatSwitch" component={MemeTwoBeat} durationInFrames={160} fps={30} width={1080} height={1920} defaultProps={{ ...wowAlliance, music: "comedy_mischief_loop.mp3", punchMusic: "epic_boss_battle.mp3" }} />
       <Composition id="MemeWowRaccourci" component={MemeTwoBeat} durationInFrames={150} fps={30} width={1080} height={1920} defaultProps={wowRaccourci} />
       <Composition id="MemeWowCoucher" component={MemeTwoBeat} durationInFrames={145} fps={30} width={1080} height={1920} defaultProps={wowCoucher} />
+      <Composition id="PinOrgrimmarSilent" component={LocationPin} durationInFrames={139} fps={30} width={1080} height={1920} defaultProps={{ src: "ai_orgrimmar_launch.mp4", clipFrames: 139, place: "Orgrimmar", date: "4 novembre 2026, 23:59" }} />
+      <Composition id="PinOrgrimmarMusic" component={LocationPin} durationInFrames={139} fps={30} width={1080} height={1920} defaultProps={{ src: "ai_orgrimmar_launch.mp4", clipFrames: 139, place: "Orgrimmar", date: "4 novembre 2026, 23:59", music: "epic_honor_bound.mp3" }} />
       <Composition id="TierListSoloV2" component={TierList} durationInFrames={225} fps={30} width={1080} height={1920} defaultProps={{ ...soloTiers, reveal: [30, 60, 90, 150] }} />
       <Composition id="MemeWarzoneDropV2" component={MemeWarzoneDrop} durationInFrames={145} fps={30} width={1080} height={1920} />
     <Composition id="ListGta6Soiree" component={TimeLadder} durationInFrames={230} fps={30} width={1080} height={1920} defaultProps={gta6Soiree} />
