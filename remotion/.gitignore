@@ -11,3 +11,5 @@ public/*.mp4
 public/*.mp3
 public/*.wav
 public/sfx/
+public/*.png
+public/music/
