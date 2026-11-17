@@ -82,7 +82,7 @@ export const MemeLastQuest: React.FC = () => {
           />
         </Sequence>
 
-        <Caption lines={["Moi à 23h :", "« juste une dernière", "quête et je dors »"]} at={4} />
+        <Caption lines={["Moi à 23h :", "« juste une dernière", "quête et je dors »"]} at={-9} />
 
         {/* HUD: clock + level */}
         <div
@@ -173,7 +173,7 @@ export const MemeWarzoneDrop: React.FC = () => {
               scale: interpolate(f, [0, CUT], [1.05, 1.18], clamp),
             }}
           />
-          <Caption lines={["Le plan : on atterrit", "tous ensemble à Hajin"]} at={4} />
+          <Caption lines={["Le plan : on atterrit", "tous ensemble à Hajin"]} at={-9} />
           <div
             style={{
               position: "absolute",

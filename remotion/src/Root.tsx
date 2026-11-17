@@ -34,6 +34,40 @@ const soloTiers: TierListProps = {
   bg: "wow_bg.mp4",
 };
 
+
+const wowAlliance: MemeTwoBeatProps = {
+  setupSrc: "dur_orgri.mp4",
+  setupTrim: 42,
+  setupRate: 0.75,
+  setupPos: "50% 50%",
+  setupLines: ["Ton pote :", "« je reroll Alliance,", "c'est plus chill »"],
+  setupLabel: "La guilde Horde :",
+  punchAt: 100,
+  punchSrc: "lo_orcs.mp4",
+  punchTrim: 114,
+  punchRate: 0.55,
+  punchPos: "38% 50%",
+  punchLines: ["« on va juste", "discuter »"],
+  punchColor: "#C8102E",
+  music: true,
+};
+
+const wowTankPull: MemeTwoBeatProps = {
+  setupSrc: "lo_dungeon.mp4",
+  setupTrim: 9,
+  setupRate: 0.8,
+  setupPos: "45% 50%",
+  setupLines: ["Le tank :", "« t'inquiète, je pull", "tout, ça passe »"],
+  setupLabel: "Le heal : …",
+  punchAt: 100,
+  punchSrc: "lo_boss.mp4",
+  punchTrim: 92,
+  punchRate: 0.5,
+  punchPos: "58% 50%",
+  punchLines: ["Ça passe pas."],
+  music: true,
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -42,6 +76,10 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="MemeWarzoneDrop" component={MemeWarzoneDrop} durationInFrames={225} fps={30} width={1080} height={1920} />
       <Composition id="MemeDmzDiscret" component={MemeTwoBeat} durationInFrames={165} fps={30} width={1080} height={1920} defaultProps={dmzDiscret} />
       <Composition id="MemeDmzDiscretNoMusic" component={MemeTwoBeat} durationInFrames={165} fps={30} width={1080} height={1920} defaultProps={{ ...dmzDiscret, music: false }} />
+      <Composition id="MemeWowAlliance" component={MemeTwoBeat} durationInFrames={160} fps={30} width={1080} height={1920} defaultProps={wowAlliance} />
+      <Composition id="MemeWowTankPull" component={MemeTwoBeat} durationInFrames={160} fps={30} width={1080} height={1920} defaultProps={wowTankPull} />
+      <Composition id="TierListSoloV2" component={TierList} durationInFrames={225} fps={30} width={1080} height={1920} defaultProps={{ ...soloTiers, reveal: [30, 60, 90, 150] }} />
+      <Composition id="MemeWarzoneDropV2" component={MemeWarzoneDrop} durationInFrames={145} fps={30} width={1080} height={1920} />
     </>
   );
 };

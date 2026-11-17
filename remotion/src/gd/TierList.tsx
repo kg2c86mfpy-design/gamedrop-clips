@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Easing, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Easing, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { Audio } from "@remotion/media";
 import { OffthreadVideo as Video } from "remotion";
 import { clamp, Flash, FONT, popIn, useShake, Watermark } from "./common";
@@ -12,14 +12,17 @@ export type TierListProps = {
   cta: string;
   source: string;
   bg: string;
+  reveal?: number[]; // frames for C, B, A, S
 };
 
 // Reveal order: bottom row first, S (top row) last
-const REVEAL = [60, 105, 150, 225]; // frames for C, B, A, S
+const DEFAULT_REVEAL = [60, 105, 150, 225]; // frames for C, B, A, S
 const ROW_H = 190;
 
-export const TierList: React.FC<TierListProps> = ({ title, subtitle, tiers, cta, source, bg }) => {
+export const TierList: React.FC<TierListProps> = ({ title, subtitle, tiers, cta, source, bg, reveal }) => {
   const f = useCurrentFrame();
+  const { durationInFrames: D } = useVideoConfig();
+  const REVEAL = reveal ?? DEFAULT_REVEAL;
   const sAt = REVEAL[3];
   const shake = useShake(sAt, 14, 22);
 
@@ -34,7 +37,7 @@ export const TierList: React.FC<TierListProps> = ({ title, subtitle, tiers, cta,
             height: "100%",
             objectFit: "cover",
             filter: "blur(10px) brightness(0.45)",
-            scale: interpolate(f, [0, 390], [1.15, 1.3], clamp),
+            scale: interpolate(f, [0, D], [1.15, 1.3], clamp),
           }}
         />
 
@@ -48,8 +51,7 @@ export const TierList: React.FC<TierListProps> = ({ title, subtitle, tiers, cta,
                 lineHeight: 1.08,
                 color: "white",
                 textShadow: "0 6px 0 rgba(0,0,0,0.6)",
-                scale: interpolate(popIn(f, i * 6), [0, 1], [1.8, 1], clamp),
-                opacity: interpolate(f, [i * 6, i * 6 + 4], [0, 1], clamp),
+                scale: interpolate(popIn(f, i * 3 - 9), [0, 1], [1.4, 1], clamp),
               }}
             >
               {line}
@@ -185,7 +187,7 @@ export const TierList: React.FC<TierListProps> = ({ title, subtitle, tiers, cta,
       <Audio
         src={staticFile("bed.mp3")}
         trimBefore={60}
-        volume={(fr) => interpolate(fr, [0, 10, 360, 390], [0, 0.35, 0.35, 0], clamp)}
+        volume={(fr) => interpolate(fr, [0, 4, D - 30, D], [0.35, 0.35, 0.35, 0], clamp)}
       />
       <Sequence from={0}>
         <Audio src={staticFile("sfx/whoosh.wav")} volume={0.6} />
