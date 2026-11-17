@@ -82,6 +82,21 @@ const gta6Soiree: TimeLadderProps = {
   music: true,
 };
 
+const wowRaccourci: MemeTwoBeatProps = {
+  setupSrc: "lo_t243.mp4", setupTrim: 0, setupRate: 0.8, setupPos: "50% 50%",
+  setupLines: ["Moi niveau 12 :", "« je coupe par là,", "ça ira plus vite »"],
+  punchAt: 95, punchSrc: "lo_t583.mp4", punchTrim: 0, punchRate: 0.6, punchPos: "35% 50%",
+  punchLines: ["Le raccourci :"], punchColor: "#7B2CBF",
+  music: "comedy_spring_chicken.mp3", punchMusic: "epic_night_attack.mp3",
+};
+const wowCoucher: MemeTwoBeatProps = {
+  setupSrc: "lo_t143.mp4", setupTrim: 0, setupRate: 0.8, setupPos: "50% 50%",
+  setupLines: ["Ma copine :", "« tu viens te coucher ? »"],
+  punchAt: 90, punchSrc: "lo_t43.mp4", punchTrim: 92, punchRate: 0.5, punchPos: "50% 50%",
+  punchLines: ["Moi : « j'arrive,", "encore 1 donjon »"], punchColor: "#5A189A",
+  music: "comedy_lurking_sloth.mp3", punchMusic: "epic_heroic_adventure.mp3",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -93,6 +108,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="MemeWowAlliance" component={MemeTwoBeat} durationInFrames={160} fps={30} width={1080} height={1920} defaultProps={wowAlliance} />
       <Composition id="MemeWowTankPull" component={MemeTwoBeat} durationInFrames={160} fps={30} width={1080} height={1920} defaultProps={wowTankPull} />
       <Composition id="DemoBeatSwitch" component={MemeTwoBeat} durationInFrames={160} fps={30} width={1080} height={1920} defaultProps={{ ...wowAlliance, music: "comedy_mischief_loop.mp3", punchMusic: "epic_boss_battle.mp3" }} />
+      <Composition id="MemeWowRaccourci" component={MemeTwoBeat} durationInFrames={150} fps={30} width={1080} height={1920} defaultProps={wowRaccourci} />
+      <Composition id="MemeWowCoucher" component={MemeTwoBeat} durationInFrames={145} fps={30} width={1080} height={1920} defaultProps={wowCoucher} />
       <Composition id="TierListSoloV2" component={TierList} durationInFrames={225} fps={30} width={1080} height={1920} defaultProps={{ ...soloTiers, reveal: [30, 60, 90, 150] }} />
       <Composition id="MemeWarzoneDropV2" component={MemeWarzoneDrop} durationInFrames={145} fps={30} width={1080} height={1920} />
     <Composition id="ListGta6Soiree" component={TimeLadder} durationInFrames={230} fps={30} width={1080} height={1920} defaultProps={gta6Soiree} />
