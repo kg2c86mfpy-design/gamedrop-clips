@@ -6,5 +6,5 @@ Copy into `remotion/public/` before rendering:
 - `music/bed.mp3` → `public/bed.mp3` (CC0/own music bed)
 - `Poppins-Bold.ttf` → `public/`
 
-Sources: official WoW Forever launch overview (lo_*), WoW Forever Durotar 9:16 animation (dur_*), CoD DMZ Season 1 intel briefing (dmz_*), Warzone Season 1 trailer (wz_*).
+Sources: official WoW Forever launch overview (lo_*), WoW Forever Durotar 9:16 animation (dur_*), CoD DMZ Season 1 intel briefing (dmz_*), Warzone Season 1 trailer (wz_*), GTA VI Launch Trailer from Rockstar Games YouTube rz1B4B2yBZY (gta_*: road, polish, lowrider, iguana, sunset, duo_car, swamp, cops, bike, night, beach, couple).
 To add footage: cut short 1080p segments, commit them here, regenerate INDEX.jpg.
