@@ -1,5 +1,8 @@
 import React from "react";
-import { AbsoluteFill, Audio, interpolate, Loop, OffthreadVideo, staticFile, useVideoConfig } from "remotion";
+import { AbsoluteFill, Audio, interpolate, Loop, OffthreadVideo, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { loadFont } from "@remotion/fonts";
+
+loadFont({ family: "CinzelGD", url: staticFile("Cinzel.ttf"), weight: "400 900" });
 import { FONT, clamp, Watermark } from "./common";
 
 // "📍 Lieu, date" series: seamless AI clip looped, location tag, watermark, optional music.
@@ -11,6 +14,12 @@ export type LocationPinProps = {
   music?: string; // file in public/music/, omit for the silent TikTok/IG export
   musicStart?: number;
   aiLabel?: boolean;
+  look?: "box" | "fantasy"; // fantasy = small gold engraved text in the sky, crowd left clear
+  musicEnd?: number; // frame where the build track fades out (suspense gap)
+  hitAt?: number; // frame of the reveal: 2nd track + boom
+  hitMusic?: string;
+  hitMusicStart?: number; // seconds into hitMusic that land on hitAt
+  flashEnd?: boolean; // white flash on the last frames (cliffhanger before the loop)
 };
 
 const Pin: React.FC = () => (
@@ -20,8 +29,14 @@ const Pin: React.FC = () => (
   </svg>
 );
 
-export const LocationPin: React.FC<LocationPinProps> = ({ src, clipFrames, place, date, music, musicStart, aiLabel = true }) => {
+export const LocationPin: React.FC<LocationPinProps> = ({ src, clipFrames, place, date, music, musicStart, aiLabel = true, look = "box", musicEnd, hitAt, hitMusic, hitMusicStart, flashEnd }) => {
   const { durationInFrames: D } = useVideoConfig();
+  const f = useCurrentFrame();
+  const gold: React.CSSProperties = {
+    fontFamily: "CinzelGD", fontWeight: 800, letterSpacing: 3, textAlign: "center",
+    background: "linear-gradient(180deg,#FFF3C4 0%,#F2C14E 45%,#B07A1E 100%)", WebkitBackgroundClip: "text", color: "transparent",
+    filter: "drop-shadow(0 3px 2px rgba(0,0,0,0.95)) drop-shadow(0 0 14px rgba(0,0,0,0.8))",
+  };
   const tag: React.CSSProperties = {
     fontFamily: FONT, color: "#fff", background: "rgba(0,0,0,0.78)", padding: "6px 18px", borderRadius: 10,
   };
@@ -31,15 +46,28 @@ export const LocationPin: React.FC<LocationPinProps> = ({ src, clipFrames, place
       <Loop durationInFrames={clipFrames}>
         <OffthreadVideo src={staticFile(src)} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </Loop>
-      <AbsoluteFill style={{ justifyContent: "flex-start", alignItems: "center", paddingTop: 1180 }}>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
-          <div style={{ ...tag, display: "flex", alignItems: "center", fontSize: 54 }}>
-            <Pin />
-            {place}
+      {look === "fantasy" ? (
+        <AbsoluteFill style={{ justifyContent: "flex-start", alignItems: "center", paddingTop: 215 }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Pin />
+              <div style={{ ...gold, fontSize: 64 }}>{place}</div>
+            </div>
+            <div style={{ ...gold, fontSize: 34, fontWeight: 600, marginTop: 2 }}>{date}</div>
           </div>
-          <div style={{ ...tag, fontSize: 44 }}>{date}</div>
-        </div>
-      </AbsoluteFill>
+        </AbsoluteFill>
+      ) : (
+        <AbsoluteFill style={{ justifyContent: "flex-start", alignItems: "center", paddingTop: 1180 }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+            <div style={{ ...tag, display: "flex", alignItems: "center", fontSize: 54 }}>
+              <Pin />
+              {place}
+            </div>
+            <div style={{ ...tag, fontSize: 44 }}>{date}</div>
+          </div>
+        </AbsoluteFill>
+      )}
+      {flashEnd ? <AbsoluteFill style={{ background: "#FFF6DC", opacity: interpolate(f, [D - 9, D - 1], [0, 1], clamp) }} /> : null}
       {aiLabel ? (
         <div style={{ position: "absolute", left: 28, bottom: 40, fontFamily: FONT, fontSize: 24, color: "rgba(255,255,255,0.7)" }}>
           Contenu généré par IA
@@ -50,8 +78,17 @@ export const LocationPin: React.FC<LocationPinProps> = ({ src, clipFrames, place
         <Audio
           src={staticFile(`music/${music}`)}
           trimBefore={Math.round((musicStart ?? 0) * 30)}
-          volume={(fr) => interpolate(fr, [0, 6, D - 20, D], [0, 0.45, 0.45, 0], clamp)}
+          volume={(fr) =>
+            musicEnd
+              ? interpolate(fr, [0, 4, musicEnd - 8, musicEnd], [0, 0.55, 0.55, 0.04], clamp)
+              : interpolate(fr, [0, 6, D - 20, D], [0, 0.45, 0.45, 0], clamp)
+          }
         />
+      ) : null}
+      {music && hitAt !== undefined && hitMusic ? (
+        <Sequence from={hitAt}>
+          <Audio src={staticFile(`music/${hitMusic}`)} trimBefore={Math.round((hitMusicStart ?? 0) * 30)} volume={0.6} />
+        </Sequence>
       ) : null}
     </AbsoluteFill>
   );
