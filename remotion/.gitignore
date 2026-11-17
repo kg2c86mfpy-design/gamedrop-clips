@@ -5,3 +5,9 @@ dist
 
 # Ignore the output video from Git but not videos you import into src/.
 out
+
+# Per-run assets (footage, music, SFX) are staged each run, not versioned
+public/*.mp4
+public/*.mp3
+public/*.wav
+public/sfx/
