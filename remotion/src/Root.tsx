@@ -2,6 +2,7 @@ import React from "react";
 import { Composition } from "remotion";
 import { TierList, TierListProps } from "./gd/TierList";
 import { MemeLastQuest, MemeWarzoneDrop } from "./gd/Memes";
+import { TwoWaits, TwoWaitsProps } from "./gd/TwoWaits";
 import { MemeTwoBeat, MemeTwoBeatProps } from "./gd/MemeTwoBeat";
 import { TimeLadder, TimeLadderProps } from "./gd/TimeLadder";
 
@@ -97,6 +98,24 @@ const wowCoucher: MemeTwoBeatProps = {
   music: "comedy_lurking_sloth.mp3", punchMusic: "epic_heroic_adventure.mp3",
 };
 
+
+// 18 Nov 12:30 — "13 ans d'attente / 9 mois d'attente" (baby = AI-generated, fictional; GTA = official launch trailer)
+const deuxAttentes: TwoWaitsProps = {
+  photo: "baby.png",
+  focus: { x: 49, y: 36 },
+  topClips: [
+    { src: "gta_lowrider.mp4", rate: 0.9, len: 36 },
+    { src: "gta_beach.mp4", rate: 0.9, len: 30 },
+    { src: "gta_sunset.mp4", rate: 0.85, len: 24 },
+  ],
+  header: "Ce mois-ci :",
+  topLabel: "13 ans d'attente…",
+  bottomLabel: "9 mois d'attente…",
+  punchAt: 90,
+  punchLines: ["Des choix vont", "devoir être faits."],
+  music: "urban_backbeat.mp3",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -113,6 +132,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="TierListSoloV2" component={TierList} durationInFrames={225} fps={30} width={1080} height={1920} defaultProps={{ ...soloTiers, reveal: [30, 60, 90, 150] }} />
       <Composition id="MemeWarzoneDropV2" component={MemeWarzoneDrop} durationInFrames={145} fps={30} width={1080} height={1920} />
     <Composition id="ListGta6Soiree" component={TimeLadder} durationInFrames={230} fps={30} width={1080} height={1920} defaultProps={gta6Soiree} />
+      <Composition id="MemeDeuxAttentes" component={TwoWaits} durationInFrames={140} fps={30} width={1080} height={1920} defaultProps={deuxAttentes} />
+      <Composition id="MemeDeuxAttentesNoMusic" component={TwoWaits} durationInFrames={140} fps={30} width={1080} height={1920} defaultProps={{ ...deuxAttentes, music: undefined }} />
     </>
   );
 };
