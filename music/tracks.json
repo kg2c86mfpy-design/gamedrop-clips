@@ -1,0 +1,112 @@
+{
+ "action_behind_enemy_lines": {
+  "hookStartInOriginal_s": 1.2,
+  "originalDuration_s": 114.9,
+  "integratedLUFS": -11.6
+ },
+ "action_city_run": {
+  "hookStartInOriginal_s": 0.1,
+  "originalDuration_s": 37.1,
+  "integratedLUFS": -12.7
+ },
+ "action_guerilla_tactics": {
+  "hookStartInOriginal_s": 0.1,
+  "originalDuration_s": 109.1,
+  "integratedLUFS": -13.9
+ },
+ "action_strike": {
+  "hookStartInOriginal_s": 30.0,
+  "originalDuration_s": 134.5,
+  "integratedLUFS": -12.1
+ },
+ "chip_beat_one": {
+  "hookStartInOriginal_s": 0.2,
+  "originalDuration_s": 179.9,
+  "integratedLUFS": -14.8
+ },
+ "chip_bit_bit_loop": {
+  "hookStartInOriginal_s": 0.1,
+  "originalDuration_s": 76.8,
+  "integratedLUFS": -5.8
+ },
+ "comedy_busybody": {
+  "hookStartInOriginal_s": 0.1,
+  "originalDuration_s": 86.4,
+  "integratedLUFS": -16.4
+ },
+ "comedy_lurking_sloth": {
+  "hookStartInOriginal_s": 2.9,
+  "originalDuration_s": 157.8,
+  "integratedLUFS": -17.2
+ },
+ "comedy_mischief_loop": {
+  "hookStartInOriginal_s": 0.1,
+  "originalDuration_s": 42.7,
+  "integratedLUFS": -19.5
+ },
+ "comedy_monsters_in_hotel": {
+  "hookStartInOriginal_s": 3.6,
+  "originalDuration_s": 125.6,
+  "integratedLUFS": -16.1
+ },
+ "comedy_silly_boy": {
+  "hookStartInOriginal_s": 0.2,
+  "originalDuration_s": 95.5,
+  "integratedLUFS": -19.6
+ },
+ "comedy_spring_chicken": {
+  "hookStartInOriginal_s": 0.1,
+  "originalDuration_s": 166.9,
+  "integratedLUFS": -15.3
+ },
+ "epic_boss_battle": {
+  "hookStartInOriginal_s": 0.1,
+  "originalDuration_s": 170.4,
+  "integratedLUFS": -9.2
+ },
+ "epic_heroic_adventure": {
+  "hookStartInOriginal_s": 0.1,
+  "originalDuration_s": 142.9,
+  "integratedLUFS": -11.4
+ },
+ "epic_honor_bound": {
+  "hookStartInOriginal_s": 9.7,
+  "originalDuration_s": 170.5,
+  "integratedLUFS": -8.7
+ },
+ "epic_night_attack": {
+  "hookStartInOriginal_s": 0.1,
+  "originalDuration_s": 153.1,
+  "integratedLUFS": -11.0
+ },
+ "epic_video_game_blockbuster": {
+  "hookStartInOriginal_s": 12.8,
+  "originalDuration_s": 142.5,
+  "integratedLUFS": -12.2
+ },
+ "urban_3am_west_end": {
+  "hookStartInOriginal_s": 4.3,
+  "originalDuration_s": 291.0,
+  "integratedLUFS": -19.6
+ },
+ "urban_backbeat": {
+  "hookStartInOriginal_s": 0.4,
+  "originalDuration_s": 46.2,
+  "integratedLUFS": -23.1
+ },
+ "urban_funky_energy_loop": {
+  "hookStartInOriginal_s": 0.1,
+  "originalDuration_s": 202.5,
+  "integratedLUFS": -20.1
+ },
+ "urban_hippety_hop": {
+  "hookStartInOriginal_s": 16.3,
+  "originalDuration_s": 116.6,
+  "integratedLUFS": -12.2
+ },
+ "urban_patron_saint_of_heists": {
+  "hookStartInOriginal_s": 0.1,
+  "originalDuration_s": 186.9,
+  "integratedLUFS": -12.9
+ }
+}
