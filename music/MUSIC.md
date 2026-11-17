@@ -12,3 +12,9 @@ Copy to remotion/public/music/ and pass the file name as `music` (MemeTwoBeat, T
 | Chiptune / gamey | tier lists, lists, tips | chip_bit_bit_loop, chip_beat_one |
 
 Rules: never reuse the same track two posts in a row; log the track in the post's Log row. Best pattern for memes: comedy/sneaky setup → `punchMusic` from the game's mood (epic/action/urban). TikTok: music still gets added in the app when posting by hand (trending sound), API posts use ours.
+
+## Build → hit tracks (full-length, normalised; for reveals)
+- epic_kings_trailer.mp3 (FreePD "Kings Trailer"): steady crescendo 152.9 s → peak 156.4 s.
+- epic_blockbuster_2.mp3 (FreePD "Epic Blockbuster 2"): fade to silence 65.3–66.6 s, huge hit at 66.8 s (also 135.3 s).
+Pattern used in LocationPin: `music` = build (musicStart = peak − build length, `musicEnd` = fade a few frames before the reveal), then `hitMusic` lands its hit on `hitAt`.
+Font Cinzel.ttf (SIL OFL, Google Fonts) for the "fantasy" gold text look.
