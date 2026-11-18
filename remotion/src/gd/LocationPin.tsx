@@ -23,6 +23,7 @@ export type LocationPinProps = {
   soundtrack?: string; // full pre-mixed audio in public/music/ (overrides music/hitMusic)
   question?: string; // engagement question shown near the end
   questionAt?: number;
+  questionTop?: number; // px from top of the 1920 frame (default: centred)
 };
 
 const Pin: React.FC = () => (
@@ -32,7 +33,7 @@ const Pin: React.FC = () => (
   </svg>
 );
 
-export const LocationPin: React.FC<LocationPinProps> = ({ src, clipFrames, place, date, music, musicStart, aiLabel = true, look = "box", musicEnd, hitAt, hitMusic, hitMusicStart, flashEnd, soundtrack, question, questionAt }) => {
+export const LocationPin: React.FC<LocationPinProps> = ({ src, clipFrames, place, date, music, musicStart, aiLabel = true, look = "box", musicEnd, hitAt, hitMusic, hitMusicStart, flashEnd, soundtrack, question, questionAt, questionTop }) => {
   const { durationInFrames: D } = useVideoConfig();
   const f = useCurrentFrame();
   const gold: React.CSSProperties = {
@@ -71,7 +72,7 @@ export const LocationPin: React.FC<LocationPinProps> = ({ src, clipFrames, place
         </AbsoluteFill>
       )}
       {question && questionAt !== undefined ? (
-        <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", paddingTop: 260 }}>
+        <AbsoluteFill style={questionTop !== undefined ? { justifyContent: "flex-start", alignItems: "center", paddingTop: questionTop } : { justifyContent: "center", alignItems: "center", paddingTop: 260 }}>
           <div
             style={{
               ...gold, fontSize: 92, lineHeight: 1.05,
