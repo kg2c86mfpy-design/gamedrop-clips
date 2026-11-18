@@ -117,6 +117,17 @@ const deuxAttentes: TwoWaitsProps = {
   music: "urban_backbeat.mp3",
 };
 
+
+// 23 Nov — "J'invite mon daron en donjon" (life-of-a-player: dad dungeon group)
+const wowDaron: MemeTwoBeatProps = {
+  setupSrc: "lo_t23.mp4", setupTrim: 132, setupRate: 0.6, setupPos: "50% 50%",
+  setupLines: ["J'invite mon daron", "en donjon :", "« t'inquiète papa,", "je t'explique »"],
+  setupLabel: "Mon daron :",
+  punchAt: 95, punchSrc: "lo_t463.mp4", punchTrim: 15, punchRate: 0.6, punchPos: "38% 50%",
+  punchLines: ["« J'ai clean ce", "donjon en 2005. »"], punchColor: "#F0A500",
+  music: "comedy_busybody.mp3", punchMusic: "epic_heroic_adventure.mp3",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -142,6 +153,7 @@ export const RemotionRoot: React.FC = () => {
     <Composition id="ListGta6Soiree" component={TimeLadder} durationInFrames={230} fps={30} width={1080} height={1920} defaultProps={gta6Soiree} />
       <Composition id="MemeDeuxAttentes" component={TwoWaits} durationInFrames={140} fps={30} width={1080} height={1920} defaultProps={deuxAttentes} />
       <Composition id="MemeDeuxAttentesNoMusic" component={TwoWaits} durationInFrames={140} fps={30} width={1080} height={1920} defaultProps={{ ...deuxAttentes, music: undefined }} />
+      <Composition id="MemeWowDaron" component={MemeTwoBeat} durationInFrames={145} fps={30} width={1080} height={1920} defaultProps={wowDaron} />
     </>
   );
 };
