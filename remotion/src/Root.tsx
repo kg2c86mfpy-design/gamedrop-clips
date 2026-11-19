@@ -128,6 +128,20 @@ const wowDaron: MemeTwoBeatProps = {
   music: "comedy_busybody.mp3", punchMusic: "epic_heroic_adventure.mp3",
 };
 
+
+// 24 Nov — list "Ton groupe de donjon WoW Forever" (life-of-a-player list, punch = "Toi")
+const wowGroupe: TimeLadderProps = {
+  title: ["Chaque groupe de", "donjon WoW Forever :"],
+  steps: [
+    { time: "Chasseur", text: "need sur tout, même la robe en tissu", src: "lo_t883.mp4", rate: 0.8 },
+    { time: "Mage", text: "« 2 min, je mange »… 20 min", src: "lo_t263.mp4", rate: 0.8 },
+    { time: "Voleur", text: "part juste après SON boss", src: "lo_t423.mp4", trim: 30, rate: 0.7 },
+    { time: "Toi", text: "tu fais les trois.", src: "lo_t83.mp4", trim: 120, rate: 0.6 },
+  ],
+  at: [0, 50, 100, 150],
+  music: true,
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -154,6 +168,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="MemeDeuxAttentes" component={TwoWaits} durationInFrames={140} fps={30} width={1080} height={1920} defaultProps={deuxAttentes} />
       <Composition id="MemeDeuxAttentesNoMusic" component={TwoWaits} durationInFrames={140} fps={30} width={1080} height={1920} defaultProps={{ ...deuxAttentes, music: undefined }} />
       <Composition id="MemeWowDaron" component={MemeTwoBeat} durationInFrames={145} fps={30} width={1080} height={1920} defaultProps={wowDaron} />
+      <Composition id="ListWowGroupe" component={TimeLadder} durationInFrames={192} fps={30} width={1080} height={1920} defaultProps={wowGroupe} />
     </>
   );
 };

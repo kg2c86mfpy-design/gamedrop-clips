@@ -78,6 +78,8 @@ export const TimeLadder: React.FC<TimeLadderProps> = (p) => {
                 <div
                   style={{
                     minWidth: 150,
+                    flexShrink: 0,
+                    whiteSpace: "nowrap",
                     fontSize: 48,
                     color: last ? "#111" : "white",
                     backgroundColor: last ? "#FFC400" : "#E8336D",
