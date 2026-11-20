@@ -142,6 +142,16 @@ const wowGroupe: TimeLadderProps = {
   music: true,
 };
 
+
+// 25 Nov — GTA 6 "je joue réglo" (life-of-a-player; official GTA VI launch trailer footage)
+const gtaReglo: MemeTwoBeatProps = {
+  setupSrc: "gta_road_c.mp4", setupTrim: 0, setupRate: 0.65, setupPos: "50% 50%",
+  setupLines: ["Moi sur GTA 6 :", "« ce soir je joue", "réglo, je respecte", "les feux rouges »"],
+  punchAt: 95, punchSrc: "gta_bike_c.mp4", punchTrim: 6, punchRate: 0.6, punchPos: "50% 50%",
+  punchLines: ["30 secondes après :", "5 étoiles"], punchColor: "#FF2E88",
+  music: "comedy_spring_chicken.mp3", punchMusic: "action_city_run.mp3",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -168,6 +178,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="MemeDeuxAttentes" component={TwoWaits} durationInFrames={140} fps={30} width={1080} height={1920} defaultProps={deuxAttentes} />
       <Composition id="MemeDeuxAttentesNoMusic" component={TwoWaits} durationInFrames={140} fps={30} width={1080} height={1920} defaultProps={{ ...deuxAttentes, music: undefined }} />
       <Composition id="MemeWowDaron" component={MemeTwoBeat} durationInFrames={145} fps={30} width={1080} height={1920} defaultProps={wowDaron} />
+      <Composition id="MemeGtaReglo" component={MemeTwoBeat} durationInFrames={150} fps={30} width={1080} height={1920} defaultProps={gtaReglo} />
       <Composition id="ListWowGroupe" component={TimeLadder} durationInFrames={192} fps={30} width={1080} height={1920} defaultProps={wowGroupe} />
     </>
   );
