@@ -152,6 +152,23 @@ const gtaReglo: MemeTwoBeatProps = {
   music: "comedy_spring_chicken.mp3", punchMusic: "action_city_run.mp3",
 };
 
+// 26 Nov — Tier list #2 « C'est la faute de qui si le groupe wipe ? » (life-of-a-player; S = Le heal, revealed last)
+const wipeTiers: TierListProps = {
+  title: ["C'est la faute de qui", "si le groupe wipe ?"],
+  subtitle: "WoW Forever",
+  tiers: [
+    { label: "S", color: "#E63946", items: ["Le heal"] },
+    { label: "A", color: "#F48C06", items: ["Le tank", "Le mage AFK"] },
+    { label: "B", color: "#F0C828", items: ["Le chasseur", "Son familier"] },
+    { label: "C", color: "#50AA5A", items: ["Le boss", "Le lag"] },
+  ],
+  cta: "Le heal a toujours tort ?",
+  source: "Source : le chat de groupe après le wipe",
+  bg: "lo_dungeon.mp4",
+  reveal: [24, 50, 76, 120],
+  music: "comedy_mischief_loop.mp3",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -179,6 +196,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="MemeDeuxAttentesNoMusic" component={TwoWaits} durationInFrames={140} fps={30} width={1080} height={1920} defaultProps={{ ...deuxAttentes, music: undefined }} />
       <Composition id="MemeWowDaron" component={MemeTwoBeat} durationInFrames={145} fps={30} width={1080} height={1920} defaultProps={wowDaron} />
       <Composition id="MemeGtaReglo" component={MemeTwoBeat} durationInFrames={150} fps={30} width={1080} height={1920} defaultProps={gtaReglo} />
+      <Composition id="TierListWipe" component={TierList} durationInFrames={175} fps={30} width={1080} height={1920} defaultProps={wipeTiers} />
       <Composition id="ListWowGroupe" component={TimeLadder} durationInFrames={192} fps={30} width={1080} height={1920} defaultProps={wowGroupe} />
     </>
   );

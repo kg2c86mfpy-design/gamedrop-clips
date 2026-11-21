@@ -117,7 +117,7 @@ export const TierList: React.FC<TierListProps> = ({ title, subtitle, tiers, cta,
                     style={{
                       fontSize: 72,
                       color: "#FFC400",
-                      opacity: interpolate(f, [190, 200], [0, 1], clamp),
+                      opacity: interpolate(f, [REVEAL[2] + 8, REVEAL[2] + 16], [0, 1], clamp),
                       scale: interpolate(Math.sin(f / 3), [-1, 1], [0.9, 1.1]),
                     }}
                   >
