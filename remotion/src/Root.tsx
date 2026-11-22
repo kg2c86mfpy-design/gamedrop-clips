@@ -169,6 +169,16 @@ const wipeTiers: TierListProps = {
   music: "comedy_mischief_loop.mp3",
 };
 
+// 27 Nov — "Mes potes : Warzone ce soir ?" / Moi depuis le 19 nov : Vice City (friend-group; CoD DMZ + official GTA VI trailer footage)
+const gtaViceCity: MemeTwoBeatProps = {
+  setupSrc: "dmz_sneak.mp4", setupTrim: 0, setupRate: 0.7, setupPos: "50% 50%",
+  setupLines: ["Mes potes :", "« ce soir, Warzone", "comme d'hab ? »"],
+  setupLabel: "Moi depuis le 19 nov :",
+  punchAt: 90, punchSrc: "gta_beach.mp4", punchTrim: 0, punchRate: 0.5, punchPos: "50% 50%",
+  punchLines: ["« Désolé, j'habite", "à Vice City", "maintenant. »"], punchColor: "#FF2E88",
+  music: "action_behind_enemy_lines.mp3", punchMusic: "urban_3am_west_end.mp3",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -198,6 +208,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="MemeGtaReglo" component={MemeTwoBeat} durationInFrames={150} fps={30} width={1080} height={1920} defaultProps={gtaReglo} />
       <Composition id="TierListWipe" component={TierList} durationInFrames={175} fps={30} width={1080} height={1920} defaultProps={wipeTiers} />
       <Composition id="ListWowGroupe" component={TimeLadder} durationInFrames={192} fps={30} width={1080} height={1920} defaultProps={wowGroupe} />
+      <Composition id="MemeGtaViceCity" component={MemeTwoBeat} durationInFrames={150} fps={30} width={1080} height={1920} defaultProps={gtaViceCity} />
     </>
   );
 };
