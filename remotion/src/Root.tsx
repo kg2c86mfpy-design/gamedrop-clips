@@ -179,6 +179,16 @@ const gtaViceCity: MemeTwoBeatProps = {
   music: "action_behind_enemy_lines.mp3", punchMusic: "urban_3am_west_end.mp3",
 };
 
+// 28 Nov — "Mon pote : installe WoW Forever, on monte ensemble !" (life-of-a-player: friend who quits)
+const wowPote: MemeTwoBeatProps = {
+  setupSrc: "lo_orcs.mp4", setupTrim: 36, setupRate: 0.6, setupPos: "50% 50%",
+  setupLines: ["Mon pote :", "« installe WoW Forever,", "on monte ensemble ! »"],
+  setupLabel: "Une semaine plus tard :",
+  punchAt: 95, punchSrc: "lo_boss.mp4", punchTrim: 100, punchRate: 0.6, punchPos: "50% 50%",
+  punchLines: ["Lui : niveau 9.", "Moi : niveau 52."], punchColor: "#F0A500",
+  music: "comedy_silly_boy.mp3", punchMusic: "epic_boss_battle.mp3",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -209,6 +219,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="TierListWipe" component={TierList} durationInFrames={175} fps={30} width={1080} height={1920} defaultProps={wipeTiers} />
       <Composition id="ListWowGroupe" component={TimeLadder} durationInFrames={192} fps={30} width={1080} height={1920} defaultProps={wowGroupe} />
       <Composition id="MemeGtaViceCity" component={MemeTwoBeat} durationInFrames={150} fps={30} width={1080} height={1920} defaultProps={gtaViceCity} />
+      <Composition id="MemeWowPote" component={MemeTwoBeat} durationInFrames={145} fps={30} width={1080} height={1920} defaultProps={wowPote} />
     </>
   );
 };
