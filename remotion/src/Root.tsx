@@ -197,6 +197,8 @@ const gtaLustre: MemeTwoBeatProps = {
   punchAt: 95, punchSrc: "gta_polish_c.mp4", punchTrim: 0, punchRate: 0.55, punchPos: "44% 50%",
   punchLines: ["Ma voiture sur GTA 6 :", "lustrée avant", "CHAQUE mission"], punchColor: "#FF2E88",
   music: "comedy_spring_chicken.mp3", punchMusic: "urban_patron_saint_of_heists.mp3",
+};
+
 // Value / save content (24 Nov). Facts: each row confirmed by >=2 sites (see formats doc Log).
 const gtaReglages: GuideListProps = {
   series: "GUIDE GAMEDROP #1",
