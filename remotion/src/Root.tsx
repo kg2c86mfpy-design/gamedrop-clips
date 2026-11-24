@@ -2,6 +2,7 @@ import React from "react";
 import { Composition } from "remotion";
 import { TierList, TierListProps } from "./gd/TierList";
 import { MemeLastQuest, MemeWarzoneDrop } from "./gd/Memes";
+import { GuideList, GuideListProps } from "./gd/GuideList";
 import { TwoWaits, TwoWaitsProps } from "./gd/TwoWaits";
 import { LocationPin } from "./gd/LocationPin";
 import { MemeTwoBeat, MemeTwoBeatProps } from "./gd/MemeTwoBeat";
@@ -196,6 +197,55 @@ const gtaLustre: MemeTwoBeatProps = {
   punchAt: 95, punchSrc: "gta_polish_c.mp4", punchTrim: 0, punchRate: 0.55, punchPos: "44% 50%",
   punchLines: ["Ma voiture sur GTA 6 :", "lustrée avant", "CHAQUE mission"], punchColor: "#FF2E88",
   music: "comedy_spring_chicken.mp3", punchMusic: "urban_patron_saint_of_heists.mp3",
+// Value / save content (24 Nov). Facts: each row confirmed by >=2 sites (see formats doc Log).
+const gtaReglages: GuideListProps = {
+  series: "GUIDE GAMEDROP #1",
+  title: ["GTA 6 :", "6 réglages à changer", "AVANT de jouer"],
+  rows: [
+    { title: "Flou de mouvement", detail: "Affichage", pill: "0 ou 1" },
+    { title: "Tremblement caméra", detail: "Caméra", pill: "Désactivé" },
+    { title: "Caméras ciné (crash, kill)", detail: "Caméra", pill: "0 ou 1" },
+    { title: "Vitesse de déplacement", detail: "Jeu : courir sans appuyer", pill: "Trot" },
+    { title: "Sous-titres", detail: "Interface", pill: "Tous les dialogues" },
+    { title: "Réduction des acouphènes", detail: "Audio : stop au sifflement", pill: "Activée" },
+  ],
+  clips: [
+    { src: "gta_road.mp4" },
+    { src: "gta_cops.mp4" },
+    { src: "gta_beach.mp4" },
+    { src: "gta_night.mp4" },
+    { src: "gta_swamp.mp4" },
+    { src: "gta_polish.mp4" },
+  ],
+  first: 12,
+  step: 45,
+  cta: "ENREGISTRE-LA POUR TA PROCHAINE SESSION",
+  music: "urban_3am_west_end.mp3",
+};
+
+const gtaAstuces: GuideListProps = {
+  series: "GUIDE GAMEDROP #2",
+  title: ["GTA 6 :", "6 trucs que le jeu", "ne t'explique PAS"],
+  rows: [
+    { title: "Mode Focus", detail: "Clique les 2 sticks en même temps", pill: "L3 + R3" },
+    { title: "Planque ton cash", detail: "Plancher de la chambre de Jason", pill: "Avant BuckMe" },
+    { title: "Mort = cash perdu", detail: "Mets-le à l'abri avant un coup", pill: "Attention" },
+    { title: "Recherché ?", detail: "Change de tenue et de chapeau", pill: "Nouveau look" },
+    { title: "App Waink", detail: "Scanne une voiture avant de la voler", pill: "Téléphone" },
+    { title: "Pas de « rejouer »", detail: "Sauvegarde avant chaque chapitre", pill: "Sauvegarde" },
+  ],
+  clips: [
+    { src: "gta_lowrider.mp4" },
+    { src: "gta_duo_car.mp4" },
+    { src: "gta_couple.mp4" },
+    { src: "gta_cops.mp4" },
+    { src: "gta_bike.mp4" },
+    { src: "gta_polish.mp4" },
+  ],
+  first: 12,
+  step: 48,
+  cta: "ENREGISTRE-LA, TU ME REMERCIERAS",
+  music: "urban_backbeat.mp3",
 };
 
 export const RemotionRoot: React.FC = () => {
@@ -230,6 +280,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="MemeGtaViceCity" component={MemeTwoBeat} durationInFrames={150} fps={30} width={1080} height={1920} defaultProps={gtaViceCity} />
       <Composition id="MemeWowPote" component={MemeTwoBeat} durationInFrames={145} fps={30} width={1080} height={1920} defaultProps={wowPote} />
       <Composition id="MemeGtaLustre" component={MemeTwoBeat} durationInFrames={145} fps={30} width={1080} height={1920} defaultProps={gtaLustre} />
+      <Composition id="GuideGtaReglages" component={GuideList} durationInFrames={330} fps={30} width={1080} height={1920} defaultProps={gtaReglages} />
+      <Composition id="GuideGtaAstuces" component={GuideList} durationInFrames={350} fps={30} width={1080} height={1920} defaultProps={gtaAstuces} />
     </>
   );
 };
