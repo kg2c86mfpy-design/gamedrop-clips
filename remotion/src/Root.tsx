@@ -5,6 +5,7 @@ import { MemeLastQuest, MemeWarzoneDrop } from "./gd/Memes";
 import { GuideList, GuideListProps } from "./gd/GuideList";
 import { TwoWaits, TwoWaitsProps } from "./gd/TwoWaits";
 import { LocationPin } from "./gd/LocationPin";
+import { MemeFrame, MemeFrameProps } from "./gd/MemeFrame";
 import { MemeTwoBeat, MemeTwoBeatProps } from "./gd/MemeTwoBeat";
 import { TimeLadder, TimeLadderProps } from "./gd/TimeLadder";
 
@@ -250,6 +251,29 @@ const gtaAstuces: GuideListProps = {
   music: "urban_backbeat.mp3",
 };
 
+// 24 Nov redo — shot-first MemeFrame versions (whole 16:9 shot visible, setup text stays, punch holds ~2.7 s)
+const fReglo: MemeFrameProps = {
+  setupLines: ["Moi sur GTA 6 :", "« ce soir je joue réglo,", "je respecte le code »"],
+  setupShot: { src: "gta6_t2.mp4", from: 34.5 },
+  punchAt: 100, punchShot: { src: "gta6_t1.mp4", from: 64.05, rate: 0.6 },
+  punchLines: ["30 min plus tard :", "je passe aux infos"],
+  music: "comedy_spring_chicken.mp3", punchMusic: "action_city_run.mp3",
+};
+const fViceCity: MemeFrameProps = {
+  setupLines: ["Mes potes :", "« ce soir, Warzone", "comme d'hab ? »"],
+  setupShot: { src: "dmz_sneak.mp4", from: 0, rate: 0.8 },
+  punchAt: 100, punchShot: { src: "gta6_t1.mp4", from: 13.0, rate: 0.6 },
+  punchLines: ["Moi depuis le 19 nov :", "« Désolé, j'habite", "à Vice City »"], punchColor: "#FF4FA3",
+  music: "action_behind_enemy_lines.mp3", punchMusic: "urban_3am_west_end.mp3",
+};
+const fMuscu: MemeFrameProps = {
+  setupLines: ["Moi dans la vraie vie :", "zéro séance de sport", "depuis 2023"],
+  setupShot: { src: "gta6_launch.mp4", from: 57.75, rate: 0.5 },
+  punchAt: 95, punchShot: { src: "gta6_t2.mp4", from: 38.4, rate: 0.8 },
+  punchLines: ["Mon perso sur GTA 6 :", "muscu à la plage", "tous les jours"],
+  music: "comedy_lurking_sloth.mp3", punchMusic: "urban_funky_energy_loop.mp3",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -284,6 +308,9 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="MemeGtaLustre" component={MemeTwoBeat} durationInFrames={145} fps={30} width={1080} height={1920} defaultProps={gtaLustre} />
       <Composition id="GuideGtaReglages" component={GuideList} durationInFrames={330} fps={30} width={1080} height={1920} defaultProps={gtaReglages} />
       <Composition id="GuideGtaAstuces" component={GuideList} durationInFrames={350} fps={30} width={1080} height={1920} defaultProps={gtaAstuces} />
+      <Composition id="FrameGtaReglo" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fReglo} />
+      <Composition id="FrameGtaViceCity" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fViceCity} />
+      <Composition id="FrameGtaMuscu" component={MemeFrame} durationInFrames={175} fps={30} width={1080} height={1920} defaultProps={fMuscu} />
     </>
   );
 };
