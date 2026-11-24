@@ -189,6 +189,15 @@ const wowPote: MemeTwoBeatProps = {
   music: "comedy_silly_boy.mp3", punchMusic: "epic_boss_battle.mp3",
 };
 
+// 29 Nov — GTA 6 « Ma voiture IRL vs ma voiture sur GTA 6 » (life-of-a-player: garage obsession)
+const gtaLustre: MemeTwoBeatProps = {
+  setupSrc: "gta_road_c.mp4", setupTrim: 0, setupRate: 0.65, setupPos: "50% 50%",
+  setupLines: ["Ma voiture dans", "la vraie vie :", "pas lavée", "depuis 2024"],
+  punchAt: 95, punchSrc: "gta_polish_c.mp4", punchTrim: 0, punchRate: 0.55, punchPos: "44% 50%",
+  punchLines: ["Ma voiture sur GTA 6 :", "lustrée avant", "CHAQUE mission"], punchColor: "#FF2E88",
+  music: "comedy_spring_chicken.mp3", punchMusic: "urban_patron_saint_of_heists.mp3",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -220,6 +229,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="ListWowGroupe" component={TimeLadder} durationInFrames={192} fps={30} width={1080} height={1920} defaultProps={wowGroupe} />
       <Composition id="MemeGtaViceCity" component={MemeTwoBeat} durationInFrames={150} fps={30} width={1080} height={1920} defaultProps={gtaViceCity} />
       <Composition id="MemeWowPote" component={MemeTwoBeat} durationInFrames={145} fps={30} width={1080} height={1920} defaultProps={wowPote} />
+      <Composition id="MemeGtaLustre" component={MemeTwoBeat} durationInFrames={145} fps={30} width={1080} height={1920} defaultProps={gtaLustre} />
     </>
   );
 };
