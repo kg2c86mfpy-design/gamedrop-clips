@@ -274,6 +274,23 @@ const fMuscu: MemeFrameProps = {
   music: "comedy_lurking_sloth.mp3", punchMusic: "urban_funky_energy_loop.mp3",
 };
 
+
+// 25 Nov — WoW Forever shot-first (full official "Your Adventure Begins" trailer, footage/trailers/wowf_adventure.mp4)
+const fWowBateau: MemeFrameProps = {
+  setupLines: ["Moi sur WoW Forever :", "« je prends le bateau,", "j'en ai pour 2 min »"],
+  setupShot: { src: "wowf_adventure.mp4", from: 169.4 },
+  punchAt: 100, punchShot: { src: "wowf_adventure.mp4", from: 175.8 },
+  punchLines: ["40 min plus tard :", "toujours à fixer", "l'horizon"], punchColor: "#7FD3FF",
+  music: "comedy_busybody.mp3", punchMusic: "comedy_lurking_sloth.mp3", endSfx: "bruh",
+};
+const fWowPote: MemeFrameProps = {
+  setupLines: ["Mon pote :", "« installe WoW Forever,", "on monte ensemble ! »"],
+  setupShot: { src: "wowf_adventure.mp4", from: 162.6, rate: 0.45 },
+  punchAt: 100, punchShot: { src: "wowf_adventure.mp4", from: 301.0, rate: 0.8 },
+  punchLines: ["Une semaine plus tard :", "lui niveau 9,", "moi déjà en raid"], punchColor: "#F0A500",
+  music: "comedy_silly_boy.mp3", punchMusic: "epic_boss_battle.mp3",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -311,6 +328,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="FrameGtaReglo" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fReglo} />
       <Composition id="FrameGtaViceCity" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fViceCity} />
       <Composition id="FrameGtaMuscu" component={MemeFrame} durationInFrames={175} fps={30} width={1080} height={1920} defaultProps={fMuscu} />
+      <Composition id="FrameWowBateau" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fWowBateau} />
+      <Composition id="FrameWowPote" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fWowPote} />
     </>
   );
 };
