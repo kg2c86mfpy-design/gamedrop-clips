@@ -291,6 +291,15 @@ const fWowPote: MemeFrameProps = {
   music: "comedy_silly_boy.mp3", punchMusic: "epic_boss_battle.mp3",
 };
 
+// 26 Nov — WoW Forever shot-first, for 1 Dec (official Game Overview trailer, footage/trailers/wowf_overview.mp4)
+const fWowRdv: MemeFrameProps = {
+  setupLines: ["Le groupe :", "« RDV devant le donjon", "à 21h pile ! »"],
+  setupShot: { src: "wowf_overview.mp4", from: 244.0, rate: 0.75 },
+  punchAt: 100, punchShot: { src: "wowf_overview.mp4", from: 157.0, rate: 0.8 },
+  punchLines: ["22h15 :", "toujours tout seul", "à les attendre"], punchColor: "#B98CFF",
+  music: "comedy_mischief_loop.mp3", punchMusic: "comedy_lurking_sloth.mp3",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -330,6 +339,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="FrameGtaMuscu" component={MemeFrame} durationInFrames={175} fps={30} width={1080} height={1920} defaultProps={fMuscu} />
       <Composition id="FrameWowBateau" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fWowBateau} />
       <Composition id="FrameWowPote" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fWowPote} />
+      <Composition id="FrameWowRdv" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fWowRdv} />
     </>
   );
 };
