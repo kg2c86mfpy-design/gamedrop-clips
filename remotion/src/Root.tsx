@@ -300,6 +300,15 @@ const fWowRdv: MemeFrameProps = {
   music: "comedy_mischief_loop.mp3", punchMusic: "comedy_lurking_sloth.mp3",
 };
 
+// 27 Nov — GTA 6 shot-first, for 2 Dec (Trailer 2: 66.3 s two people face to face in a parking lot / 49.8 s prison watchtower + barbed wire)
+const fGtaPlan: MemeFrameProps = {
+  setupLines: ["Mon pote sur GTA 6 :", "« t'inquiète, mon plan", "est parfait »"],
+  setupShot: { src: "gta6_t2.mp4", from: 66.3, rate: 0.85 },
+  punchAt: 100, punchShot: { src: "gta6_t2.mp4", from: 49.8, rate: 0.65 },
+  punchLines: ["10 min plus tard :", "direction la prison"], punchColor: "#FF6B3D",
+  music: "comedy_mischief_loop.mp3", punchMusic: "comedy_lurking_sloth.mp3", endSfx: "bruh",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -340,6 +349,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="FrameWowBateau" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fWowBateau} />
       <Composition id="FrameWowPote" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fWowPote} />
       <Composition id="FrameWowRdv" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fWowRdv} />
+      <Composition id="FrameGtaPlan" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fGtaPlan} />
     </>
   );
 };
