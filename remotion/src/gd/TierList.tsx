@@ -14,13 +14,15 @@ export type TierListProps = {
   bg: string;
   reveal?: number[]; // frames for C, B, A, S
   music?: string; // file in public/music/ (default: bed.mp3)
+  bgFrom?: number; // seconds into bg (e.g. a full official trailer)
+  bgRate?: number;
 };
 
 // Reveal order: bottom row first, S (top row) last
 const DEFAULT_REVEAL = [60, 105, 150, 225]; // frames for C, B, A, S
 const ROW_H = 190;
 
-export const TierList: React.FC<TierListProps> = ({ title, subtitle, tiers, cta, source, bg, reveal, music }) => {
+export const TierList: React.FC<TierListProps> = ({ title, subtitle, tiers, cta, source, bg, reveal, music, bgFrom, bgRate }) => {
   const f = useCurrentFrame();
   const { durationInFrames: D } = useVideoConfig();
   const REVEAL = reveal ?? DEFAULT_REVEAL;
@@ -33,6 +35,8 @@ export const TierList: React.FC<TierListProps> = ({ title, subtitle, tiers, cta,
         <Video
           src={staticFile(bg)}
           muted
+          trimBefore={Math.round((bgFrom ?? 0) * 30)}
+          playbackRate={bgRate ?? 1}
           style={{
             width: "100%",
             height: "100%",

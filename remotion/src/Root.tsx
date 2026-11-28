@@ -309,6 +309,23 @@ const fGtaPlan: MemeFrameProps = {
   music: "comedy_mischief_loop.mp3", punchMusic: "comedy_lurking_sloth.mp3", endSfx: "bruh",
 };
 
+// 28 Nov — WoW Forever tier list for 3 Dec (bg: official Game Overview trailer 254 s, red dungeon hall with a group fighting)
+const donjonPhrases: TierListProps = {
+  title: ["Pire phrase à entendre", "en donjon"],
+  subtitle: "WoW Forever",
+  tiers: [
+    { label: "S", color: "#E63946", items: ["« Je reviens, je mange »"] },
+    { label: "A", color: "#F48C06", items: ["« C'est mon 1er donjon »"] },
+    { label: "B", color: "#F0C828", items: ["« Je peux need ? »"] },
+    { label: "C", color: "#50AA5A", items: ["« T'as de l'eau ? »"] },
+  ],
+  cta: "Laquelle te fait quitter le groupe ?",
+  source: "Source : 20 ans de groupes PU",
+  bg: "wowf_overview.mp4", bgFrom: 254.6, bgRate: 0.4,
+  reveal: [26, 54, 82, 125],
+  music: "comedy_mischief_loop.mp3",
+};
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
@@ -349,6 +366,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="FrameWowBateau" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fWowBateau} />
       <Composition id="FrameWowPote" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fWowPote} />
       <Composition id="FrameWowRdv" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fWowRdv} />
+      <Composition id="TierWowPhrases" component={TierList} durationInFrames={210} fps={30} width={1080} height={1920} defaultProps={donjonPhrases} />
       <Composition id="FrameGtaPlan" component={MemeFrame} durationInFrames={180} fps={30} width={1080} height={1920} defaultProps={fGtaPlan} />
     </>
   );
